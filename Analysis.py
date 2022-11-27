@@ -78,19 +78,18 @@ class Modal(Analysis):
                 new_modes = np.append(new_modes, self.modes[:, n], axis=1)
         new_modes = np.delete(new_modes, 0, axis=1)
         self.modes = new_modes
-        self.frequency = [np.sqrt(x)/(2*np.pi) for x in self.frequency if x != 1]
-        sort = True
-        while sort:
-            for n in range(0, len(self.frequency)-1):
-                sort = False
-                if self.frequency[n+1] < self.frequency[n]:
-                    b1 = self.frequency[n+1]
-                    b2 = np.matrix(self.modes[:, n+1])
-                    self.frequency[n+1] = self.frequency[n]
+        self.frequency = [np.sqrt(x) / (2 * np.pi) for x in self.frequency if x != 1]
+
+        for n in range(0, len(self.frequency)):
+            for k in range(0, len(self.frequency)):
+                if n != k and self.frequency[k] > self.frequency[n]:
+                    b1 = self.frequency[k]
+                    b2 = np.matrix(self.modes[:, k])
+                    self.frequency[k] = self.frequency[n]
                     self.frequency[n] = b1
-                    self.modes[:, n+1] = self.modes[:, n]
+                    self.modes[:, k] = self.modes[:, n]
                     self.modes[:, n] = b2
-                    sort = True
+
 
 
 

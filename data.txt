@@ -1,13 +1,13 @@
-%%Analiza statyczna
 E=200000000000;
-Ro=7860;
-A=0.000008;
+Ro=7850;
+A=0.0004;
 
 Points:
 0 0
-1 0.5
-1 0
+1 1
 2 0
+3 1
+4 0
 End Points;
 
 Elements:
@@ -16,18 +16,22 @@ Elements:
 2 3
 2 4
 3 4
+3 5
+4 5
 End Elements;
 
 Forces:
+-5000 -8660.25
 0 0
-0 -10000
+0 0
 0 0
 0 0
 End Forces;
 
 Boundary conditions:
-0 0
 1 1
+1 1
+0 0
 1 1
 1 0
 End Boundary conditions:

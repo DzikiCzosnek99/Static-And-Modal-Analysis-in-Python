@@ -6,7 +6,7 @@ class Results:
     def __init__(self, analysis):
         self.analysis = analysis
 
-    def plot_deformations(self):
+    def plot_deformations(self, scale=1):
         n = 0
         fiq, ax = plt.subplots()
         for e in self.analysis.elements:
@@ -15,14 +15,14 @@ class Results:
             y1 = e.point1.y_pos
             y2 = e.point2.y_pos
 
-            dx1 = self.analysis.deformation[2 * e.point1.number - 2, 0]
-            dx2 = self.analysis.deformation[2 * e.point2.number - 2, 0]
-            dy1 = self.analysis.deformation[2 * e.point1.number - 1, 0]
-            dy2 = self.analysis.deformation[2 * e.point2.number - 1, 0]
+            dx1 = self.analysis.deformation[2 * e.point1.number - 2, 0] * scale
+            dx2 = self.analysis.deformation[2 * e.point2.number - 2, 0] * scale
+            dy1 = self.analysis.deformation[2 * e.point1.number - 1, 0] * scale
+            dy2 = self.analysis.deformation[2 * e.point2.number - 1, 0] * scale
 
             if n == 0:
-                l1 = "Rama nieodkształcona"
-                l2 = "Rama odkształcona"
+                l1 = "Rama nieodksztalcona"
+                l2 = "Rama odksztalcona"
             else:
                 l1 = None
                 l2 = None
@@ -31,8 +31,9 @@ class Results:
             ax.plot([x1 + dx1, x2 + dx2], [y1 + dy1, y2 + dy2], color="red", linewidth=1.25, marker="o", markersize=3,
                     label=l2)
             ax.legend()
-            ax.set_ylabel("Współrzędna Y [m]")
-            ax.set_xlabel("Współrzędna X [m]")
+            ax.set_title(f"Wykres odksztalcen skala={scale}:1")
+            ax.set_ylabel("Wspolrzedna Y [m]")
+            ax.set_xlabel("Wspolrzedna X [m]")
 
             n = n + 1
 
@@ -55,8 +56,8 @@ class Results:
             dy2 = deformation[2 * e.point2.number - 1] * scale
 
             if n == 0:
-                l1 = "Rama nieodkształcona"
-                l2 = "Rama odkształcona"
+                l1 = "Rama nieodksztalcona"
+                l2 = "Rama odksztalcona"
             else:
                 l1 = None
                 l2 = None
@@ -65,9 +66,9 @@ class Results:
             ax.plot([x1 + dx1, x2 + dx2], [y1 + dy1, y2 + dy2], color="red", linewidth=1.25, marker="o", markersize=3,
                     label=l2)
             ax.legend()
-            ax.set_title(f"Odkształcenia dla f={round(self.analysis.frequency[mode - 1], 2)}[Hz]")
-            ax.set_ylabel("Współrzędna Y [m]")
-            ax.set_xlabel("Współrzędna X [m]")
+            ax.set_title(f"Postac drgan wnasnych dla f={round(self.analysis.frequency[mode - 1], 2)}[Hz]")
+            ax.set_ylabel("Wspolrzedna Y [m]")
+            ax.set_xlabel("Wspolrzedna X [m]")
 
             n = n + 1
 
