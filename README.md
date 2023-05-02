@@ -1,6 +1,5 @@
 # Static-And-Modal-Analysis-in-Python
-Projekt zaliczeniowy na studia. Implementacja metody elementów skończonych do obliczeń statycznych odkształceń i postaci drgań własnych konstrukcji ramowych wykorzystując elementy prętowe.
-Dyskretyzacja oraz definicja parametrów materiałowych odbwya się poprzez edycje pliku tekstowego. Wyniki analiz zgodne z Ansys.
+University project assignment. Implementation of the finite element method for static calculations of deformations and natural vibration shapes of frame structures using beam elements. Discretization and definition of material parameters are done by editing a text file. Analysis results are consistent with Ansys.
 
 ![alt text](https://github.com/DzikiCzosnek99/Static-And-Modal-Analysis-in-Python/blob/master/static.png?raw=true)
 ![alt text](https://github.com/DzikiCzosnek99/Static-And-Modal-Analysis-in-Python/blob/master/modal.png?raw=true)
